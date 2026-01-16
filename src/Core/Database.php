@@ -4,16 +4,14 @@ use PDO;
 use PDOException;
 
 class Database{
-    private string $username = 'root';
-    private string $password = '';
-    private PDO $pdo;
-
-    public function __construct()
-    {
+    
+    public static function dbConnect(){
         try{
-        $this->pdo = new PDO('mysql:host=localhost;dbname=gestion_roles', $this->username, $this->password);
+        $conn = new PDO('mysql:localhost=host;dbname=gestion_roles', 'root', '');
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $conn;
         }catch(PDOException $e){
-            echo 'no'. $e->getMessage();
+            die ("erreur" . $e->getMessage()); 
         }
     }
 }
