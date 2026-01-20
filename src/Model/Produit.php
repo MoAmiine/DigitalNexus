@@ -8,9 +8,11 @@ class Produit {
     private int $id;
     private string $nom;
     private int $stock;
-    private Categorie $categorie;
+    private int $categories_id;
     private float $prix;
     private PDO $db;
+    public ?string $categorie_nom = null;
+
 
     public function __construct()
     {
@@ -54,14 +56,14 @@ class Produit {
         return $this;
     }
 
-    public function getCategorie(): Categorie
+    public function getCategoriesId(): Categorie
     {
-        return $this->categorie;
+        return $this->categories_id;
     }
 
-    public function setCategorie(Categorie $categorie): self
+    public function setCategoriesId(Categorie $categories_id): self
     {
-        $this->categorie = $categorie;
+        $this->categories_id = $categories_id;
 
         return $this;
     }
@@ -76,12 +78,16 @@ class Produit {
 
         return $this;
     }
-
-    public function showAllProduits(){
-        $query  ='SELECT * FROM produits';
-        $stmt = $this->db->prepare($query);
-        return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
+    public function getCategorie() {
+        return $this->categorie_nom ?? 'Non classé';
     }
 
-
+    public function showAllProduits(){
+        $query  ='SELECT p.*, c.nom AS categorie_nom 
+              FROM produits p 
+              LEFT JOIN categories c ON p.categories_id = c.id';
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
+    }
 }

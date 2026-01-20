@@ -5,9 +5,8 @@ use App\Model\Produit;
 
 class HomeController{
     public function Catalogue(){
-           $produits = new Produit();
-           $produits->showAllProduits();
-
-           require_once './src/View/Home.php';
+           $produitModel = new Produit();
+           $produits = $produitModel->showAllProduits();
+           require_once __DIR__ . '/../View/Home.php';
 }
 }

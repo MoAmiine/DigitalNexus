@@ -27,3 +27,13 @@ CREATE TABLE produits (
 INSERT INTO produits (nom, prix, stock, categorie) VALUES
 ('Ordinateur Portable', 799.99, 50, 'Electronique'),
 ('Smartphone', 599.99, 100, 'Electronique');
+
+CREATE TABLE categories (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(50) NOT NULL UNIQUE
+);
+INSERT INTO categories (nom) VALUES
+('Electronique');
+
+ALTER TABLE produits ADD COLUMN categories_id INT;
+ALTER TABLE produits ADD FOREIGN KEY (categories_id) REFERENCES categories(id); 

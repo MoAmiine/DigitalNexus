@@ -9,9 +9,9 @@ class Router
     public function dispatcher()
     {
         $uri = $_SERVER['REQUEST_URI'];
-        $new = new self();
-        $response = $new->resolve($uri);
-        $new->execute($response);
+        
+        $response = $this->resolve($uri);
+        $this->execute($response);
         }
     public function resolve($uri)
     {
@@ -21,6 +21,12 @@ class Router
         $uriArray = explode("/", $controller[0]);
         }else{
         $uriArray = explode("/", $uri);
+        }
+        if (empty($uriArray[0])) {
+            return [
+                'controller' => 'HomeController',
+                'method' => 'Catalogue'
+            ];
         }
         $controller = $uriArray[1];
         $method = $uriArray[2];

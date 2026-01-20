@@ -1,9 +1,6 @@
 <?php 
-use App\Model\Produit;
-use App\Controller\HomeController;
-header('../../../../home/catalogue');
-$produits = new Produit();
-           $produits->showAllProduits();
+
+
 
 ?>
 
@@ -117,28 +114,40 @@ $produits = new Produit();
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             
-                <?php foreach($produits as $item): ?>
-                <div class="group bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-                    <div class="relative p-4">
-                        <div class="aspect-square bg-slate-50 rounded-2xl overflow-hidden">
-                            <img  
-                                 class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        </div>
-                    </div>
-                    <div class="px-6 pb-6">
-                        <span class="text-[10px] font-black uppercase tracking-widest text-blue-600 bg-blue-50 px-2 py-1 rounded">
-                            <?= htmlspecialchars($item->categorie) ?>
-                        </span>
-                        <h3 class="mt-3 font-bold text-slate-800 line-clamp-1"><?= htmlspecialchars($item->nom) ?></h3>
-                        <div class="mt-4 flex items-center justify-between">
-                            <span class="text-xl font-extrabold text-slate-900"><?= number_format($produit->prix, 2) ?> €</span>
-                            <a href="/products/detail/<?= $produit->id ?>" class="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center hover:bg-blue-600 hover:text-white transition">
-                                <i class="fa-solid fa-plus"></i>
-                            </a>
-                        </div>
-                    </div>
+                
+
+               <?php foreach($produits as $produit): ?>
+    <div class="group bg-white rounded-3xl border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+        <div class="relative p-4">
+            <div class="aspect-square bg-slate-50 rounded-2xl overflow-hidden flex items-center justify-center">
+                <div class="text-slate-300 group-hover:scale-110 group-hover:text-blue-200 transition duration-500">
+                    <i class="fa-solid fa-microchip text-5xl"></i>
                 </div>
-                <?php endforeach; ?>
+            </div>
+        </div>
+
+        <div class="px-6 pb-6">
+            <span class="text-[10px] font-black uppercase tracking-widest text-blue-600 bg-blue-50 px-2 py-1 rounded">
+                <?= htmlspecialchars($produit->getCategorie()) ?>
+            </span>
+            
+            <h3 class="mt-3 font-bold text-slate-800 line-clamp-1">
+                <?= htmlspecialchars($produit->getNom()) ?>
+            </h3>
+
+            <div class="mt-4 flex items-center justify-between">
+                <span class="text-xl font-extrabold text-slate-900">
+                    <?= number_format((float)($produit->getPrix()), 2) ?> €
+                </span>
+                
+                <a href="/products/detail/<?= $produit->getId()?>" 
+                   class="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center hover:bg-blue-600 hover:text-white transition">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+<?php endforeach; ?>
  
     </main>
 
