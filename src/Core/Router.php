@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Core;
+use Error;
 
 class Router
 {
@@ -23,18 +24,30 @@ class Router
         }
         $controller = $uriArray[1];
         $method = $uriArray[2];
+        // $params = array_slice($uriArray, 2);
 
         $controller = ucfirst($controller) . 'Controller';
         return [
             'controller' => $controller,
-            'method' => $method
+            'method' => $method,
+            // 'params' => $params
         ];
+
     }
 
     public function execute($response){
+
         $controller = "\App\Controller\\" . $response['controller'];
+        $methodName = $response['method'];
+        $params = isset($response['params']) ? $response['params'] : [];
+
         $instance = new $controller();
-        $instance->{$response['method']}();        
-}
+
+
+          return call_user_func(array($instance, $response['method']));
+
+    
+    }
+
 }
 
