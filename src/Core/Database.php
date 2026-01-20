@@ -7,7 +7,7 @@ class Database{
     
     public static function dbConnect(){
         try{
-        $conn = new PDO('mysql:localhost=host;dbname=gestion_roles', 'root', '');
+        $conn = new PDO('mysql:localhost=host;dbname=digitalnexus', 'root', '');
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $conn;
         }catch(PDOException $e){
