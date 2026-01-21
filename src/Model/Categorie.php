@@ -2,8 +2,8 @@
 namespace App\Model;
 use App\Core\Database;
 class Categorie {
-    private int $id;
-    private string $nom_categorie;
+    private ?int $id;
+    private ?string $nom_categorie;
     private array $produits;
     private $db;
     
@@ -54,4 +54,11 @@ class Categorie {
         $stmt->execute([$this->getNomCategorie()]);
         $stmt->fetch();
     }
+    
+    public function findAllCategories(){
+        $query = 'SELECT * FROM categories';
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_OBJ);    
+        }
 }

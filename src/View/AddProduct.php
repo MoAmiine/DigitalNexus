@@ -1,5 +1,6 @@
 <?php 
 use App\Model\Categorie;
+use App\Controller\AdminController;
 ?>
 
 <!DOCTYPE html>
@@ -78,7 +79,7 @@ use App\Model\Categorie;
                         <div class="space-y-2">
                             <label class="text-sm font-bold text-slate-700 ml-1">Catégorie</label>
                             <div class="relative">
-                                <select name="id_categorie" required 
+                                <select name="id" required 
                                     class="w-full px-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:border-blue-500 transition appearance-none cursor-pointer">
                                     <option value="" disabled selected>Choisir une catégorie...</option>
                                     <?php foreach($categories as $cat): ?>
