@@ -22,7 +22,7 @@ class Router
         }else{
         $uriArray = explode("/", $uri);
         }
-        if (empty($uriArray[0])) {
+        if (empty($uriArray[1])) {
             return [
                 'controller' => 'HomeController',
                 'method' => 'Catalogue'

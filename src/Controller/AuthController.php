@@ -11,6 +11,7 @@ class AuthController{
     {
         $this->user = new User();
     }
+    
     public function SignUp(){
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             $this->user = new User();
@@ -18,7 +19,18 @@ class AuthController{
             $this->user->setLastname($_POST['Lastname']);
             $this->user->setFirstname($_POST['Firstname']);
             $this->user->setPassword($_POST['password']);
-            $this->user->save();    
+            if($this->user->save()){
+                header('Location: ../../../View/Login.php');
+                exit();
+            }
+             else{
+            $error = "Erreur lors de l'inscription.";
+        require_once __DIR__ . '/../View/signUp.php'; 
+        }
+         
+        }
+        else {
+        require_once __DIR__ . '/../View/signUp.php';   
         }
 
         }
@@ -30,25 +42,33 @@ public function Login() {
 
         $user = $this->user->findUserByEmail($email);
 
-        if (!$user || !password_verify($password, $user->password)) {
+        if (!$user || !password_verify($password, $user->getPassword())) {
             echo 'Email ou mot de passe incorrect';
         } else {
+            if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
             $_SESSION['user'] = [
                 'id' => $user->id,
                 'Firstname' => $user->Firstname,
                 'Lastname' => $user->Lastname,
                 'email' => $user->email
             ];
-            header('Location: ../../../../src/View/Home.php');
+            
+            header('Location: /home/Catalogue');
             exit();
 
         }
     } else {
-        require_once './src/View/Login.html';
+        require_once './src/View/Login.php';
     }
 }
 public function Logout(){
-    session_abort();
-    header('Location: ../../../auth/Login');
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    session_destroy();
+    
+    header('Location: /home/Catalogue');
 }
 }

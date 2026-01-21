@@ -56,12 +56,12 @@ class Produit {
         return $this;
     }
 
-    public function getCategoriesId(): Categorie
+    public function getCategoriesId(): int
     {
         return $this->categories_id;
     }
 
-    public function setCategoriesId(Categorie $categories_id): self
+    public function setCategoriesId(int $categories_id): self
     {
         $this->categories_id = $categories_id;
 

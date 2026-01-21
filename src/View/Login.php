@@ -74,7 +74,7 @@
             <div class="mt-8 pt-6 border-t border-slate-100 text-center">
                 <p class="text-slate-600 text-sm">
                     Pas encore de compte ? 
-                    <a href="/auth/register" class="text-blue-600 font-bold hover:underline">Créer un compte</a>
+                    <a href="/../../../../src/View/signUp.php" class="text-blue-600 font-bold hover:underline">Créer un compte</a>
                 </p>
             </div>
         </div>

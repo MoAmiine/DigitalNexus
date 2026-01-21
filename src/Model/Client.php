@@ -6,6 +6,6 @@ class Client extends User
 {
     public function __construct()
     {
-        $this->role = role::client;
+        $this->role = 'client';
     }
 }

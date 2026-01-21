@@ -32,7 +32,7 @@
                 </div>
             <?php endif; ?>
 
-            <form action="../../../../auth/register" method="POST" class="space-y-5">
+            <form action="../../../../auth/SignUp" method="POST" class="space-y-5">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
                         <label for="Firstname" class="block text-sm font-bold text-slate-700 mb-2">Prénom</label>
@@ -89,7 +89,7 @@
             <div class="mt-8 pt-6 border-t border-slate-100 text-center">
                 <p class="text-slate-600 text-sm">
                     Déjà inscrit ? 
-                    <a href="/auth/login" class="text-blue-600 font-bold hover:underline">Se connecter</a>
+                    <a href="../../../../src/View/Login.php" class="text-blue-600 font-bold hover:underline">Se connecter</a>
                 </p>
             </div>
         </div>

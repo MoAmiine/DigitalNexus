@@ -10,7 +10,7 @@ class User {
     public string $Firstname;
     public string $email;
     public string $password;
-    public role $role;
+    public string $role;
     public $db;
 
     public function __construct()
@@ -78,12 +78,12 @@ class User {
         return $this;
     }
 
-    public function getRole(): role
+    public function getRole(): string
     {
         return $this->role;
     }
 
-    public function setRole(role $role): self
+    public function setRole(string $role): self
     {
         $this->role = $role;
 
@@ -98,7 +98,6 @@ class User {
             'email' => $this->email,
             'password' => password_hash($this->password, PASSWORD_DEFAULT)
         ]);
-        echo 'data saved';
     }
 
     public function findUserByEmail(string $email){
