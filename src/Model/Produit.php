@@ -90,4 +90,22 @@ class Produit {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
     }
+    public function getProduitCount(){
+        $query = 'SELECT COUNT(*) FROM produits';
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_NUM);
+
+    }
+
+    public function insertProduit(){
+        $query = 'INSERT INTO produits(nom, prix, stock, categories_id) VALUES(:nom, :prix, :stock, :categories_id)';
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([
+            'nom' => $this->nom,
+            'prix' => $this->prix,
+            'stock' => $this->stock,
+            'categorie' =>$this->categorie_nom
+        ]);
+    }
 }

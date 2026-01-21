@@ -107,4 +107,10 @@ class User {
         $stmt->setFetchMode(PDO::FETCH_CLASS, User::class);
         return $stmt->fetch();
     }
+    public function getUserCount(){
+        $query = 'SELECT COUNT(*) FROM users';
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_NUM);
+    }
 }
