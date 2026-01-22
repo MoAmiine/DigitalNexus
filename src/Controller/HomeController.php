@@ -9,4 +9,5 @@ class HomeController{
            $produits = $produitModel->showAllProduits();
            require_once __DIR__ . '/../View/Home.php';
 }
+
 }

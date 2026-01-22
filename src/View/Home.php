@@ -29,6 +29,10 @@ session_start();
         </a>
         
         <div class="hidden md:flex items-center space-x-8 font-semibold text-sm">
+            <?php 
+            if ($_SESSION['user']['role'] == 'admin') :?>
+            <a href="/admin/Dashboard" class="hover:text-blue-600 transition">Dashboard</a>
+            <?php endif; ?>
             <a href="#catalogue" class="hover:text-blue-600 transition">Catalogue</a>
             <a href="#" class="hover:text-blue-600 transition">Promotions</a>
 
