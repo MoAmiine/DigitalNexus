@@ -1,5 +1,6 @@
 <?php 
 namespace App\Controller;
+use App\Model\Categorie;
 use App\Model\Produit;
 use App\Model\User;
 class AdminController{
@@ -21,9 +22,18 @@ class AdminController{
     }
 
     public function addProduct(){
-        require __DIR__ . '/../View/AddProduct.php';
+        $categorieModel = new Categorie();
+        $categories = $categorieModel->findAllCategories();
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-            echo 'hello';
-        }
+            $produit = new Produit();
+            $produit->setNom($_POST['nom']);
+            $produit->setPrix($_POST['prix']);
+            $produit->setStock($_POST['quantite']);
+            $produit->setCategoriesId($_POST['id']);
+            $produit->insertProduit();
+
+            header('Location: /admin/Dashboard');
+            }
+            require_once __DIR__ . '/../View/AddProduct.php';
     }
 }
