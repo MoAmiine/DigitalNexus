@@ -56,4 +56,10 @@ class AdminController{
         }
         require_once __DIR__ . '/../View/Admin/GestionCategories.php';
     }
+
+    public function Users(){
+        $userModel = new User();
+        $users = $userModel->getAllUsers();
+        require_once __DIR__ . '/../View/Admin/GestionUsers.php';
+    }
 }
