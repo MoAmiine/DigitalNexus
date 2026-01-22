@@ -30,7 +30,7 @@
                     <span class="font-bold">Tableau de bord</span>
                 </a>
                 
-                <a href="/admin/produits" class="flex items-center space-x-3 text-slate-400 hover:bg-slate-800 hover:text-white p-4 rounded-2xl transition group">
+                <a href="/admin/addProduct" class="flex items-center space-x-3 text-slate-400 hover:bg-slate-800 hover:text-white p-4 rounded-2xl transition group">
                     <i class="fa-solid fa-box text-lg group-hover:text-blue-400"></i>
                     <span>Gestion Produits</span>
                 </a>
@@ -102,8 +102,8 @@
                         <div class="flex justify-between items-start">
                             <div>
                                 <p class="text-slate-500 text-xs font-bold uppercase tracking-widest">Ventes</p>
-                                <h3 class="text-3xl font-black text-slate-900 mt-2">45,20€</h3>
-                                <p class="text-emerald-500 text-xs font-bold mt-2"><i class="fa-solid fa-arrow-up"></i> +5.4%</p>
+                                <h3 class="text-3xl font-black text-slate-900 mt-2">0,00€</h3>
+                                <p class="text-emerald-500 text-xs font-bold mt-2"><i class="fa-solid fa-arrow-up"></i> +0.0%</p>
                             </div>
                             <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center">
                                 <i class="fa-solid fa-wallet text-xl"></i>
@@ -115,7 +115,7 @@
                         <div class="flex justify-between items-start">
                             <div>
                                 <p class="text-slate-500 text-xs font-bold uppercase tracking-widest">Commandes</p>
-                                <h3 class="text-3xl font-black text-slate-900 mt-2">156</h3>
+                                <h3 class="text-3xl font-black text-slate-900 mt-2">0</h3>
                                 <p class="text-blue-500 text-xs font-bold mt-2">En cours de traitement</p>
                             </div>
                             <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center">
@@ -166,18 +166,16 @@
                                     <tr class="group hover:bg-slate-50/80 transition-all">
                                         <td class="px-8 py-5">
                                             <div class="flex items-center space-x-4">
-                                                <div class="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center text-slate-400">
-                                                    <i class="fa-solid fa-image text-xs"></i>
-                                                </div>
-                                                <span class="font-bold text-slate-700"><?= htmlspecialchars($p->nom) ?></span>
+
+                                                <span class="font-bold text-slate-700"><?= htmlspecialchars($p->getNom()) ?></span>
                                             </div>
                                         </td>
                                         <td class="px-8 py-5">
                                             <span class="px-3 py-1 bg-blue-50 text-blue-600 text-[10px] font-black rounded-full uppercase">
-                                                <?= htmlspecialchars($p->categorie_nom ?? 'Tech') ?>
+                                                <?= htmlspecialchars($p->getCategorie()) ?>
                                             </span>
                                         </td>
-                                        <td class="px-8 py-5 font-black text-slate-900"><?= number_format($p->prix, 2) ?> €</td>
+                                        <td class="px-8 py-5 font-black text-slate-900"><?= number_format($p->getPrix(), 2) ?> €</td>
                                         <td class="px-8 py-5">
                                             <div class="flex items-center text-emerald-500 text-xs font-bold">
                                                 <span class="w-2 h-2 bg-emerald-500 rounded-full mr-2"></span> En stock
@@ -188,9 +186,9 @@
                                                 <button title="Modifier" class="w-9 h-9 flex items-center justify-center bg-slate-100 text-slate-600 rounded-xl hover:bg-blue-600 hover:text-white transition">
                                                     <i class="fa-solid fa-pen-to-square text-xs"></i>
                                                 </button>
-                                                <button title="Supprimer" class="w-9 h-9 flex items-center justify-center bg-slate-100 text-red-500 rounded-xl hover:bg-red-500 hover:text-white transition">
+                                                <a href="/admin/DeleteProduct"><button value="<? $p->getId() ?>" title="Supprimer" class="w-9 h-9 flex items-center justify-center bg-slate-100 text-red-500 rounded-xl hover:bg-red-500 hover:text-white transition">
                                                     <i class="fa-solid fa-trash-can text-xs"></i>
-                                                </button>
+                                                </button></a>
                                             </div>
                                         </td>
                                     </tr>

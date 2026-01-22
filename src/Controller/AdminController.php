@@ -12,11 +12,14 @@ class AdminController{
     }
         $produitModel = new Produit();
         $produitCount = $produitModel->getProduitCount();
+        $produits = $produitModel->showAllProduits();
         $totalProduits = $produitCount[0];
 
         $userModel = new User();
         $userCount = $userModel->getUserCount();
         $totalUsers = $userCount[0];
+
+        
 
     require_once __DIR__ . '/../View/Admin/AdminDashbord.php';
     }
@@ -35,5 +38,12 @@ class AdminController{
             header('Location: /admin/Dashboard');
             }
             require_once __DIR__ . '/../View/AddProduct.php';
+    }
+
+    public function DeleteProduct(){
+        $produitModel = new Produit();
+        $produitModel->DeleteProduit();
+
+    require_once __DIR__ . '/../View/Admin/AdminDashbord.php';
     }
 }

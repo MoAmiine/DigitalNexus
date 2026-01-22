@@ -114,6 +114,13 @@ class Produit {
             'categories_id' =>$this->categories_id
         ]);
     }
+    public function DeleteProduit(){
+        $query = 'DELETE FROM produits WHERE id = ?';
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([
+            $this->id
+        ]);
+    }
 
 
 }
