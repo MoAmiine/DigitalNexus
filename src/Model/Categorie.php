@@ -62,7 +62,7 @@ class Categorie {
         return $stmt->fetchAll(\PDO::FETCH_OBJ);    
         }
         public function insertCategorie(){
-        $query = 'INSERT INTO produits(nom) VALUES(:nom)';
+        $query = 'INSERT INTO categories(nom) VALUES(:nom)';
         $stmt = $this->db->prepare($query);
         $stmt->execute([
             'nom' => $this->nom_categorie
