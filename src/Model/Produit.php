@@ -79,7 +79,13 @@ class Produit {
         return $this;
     }
     public function getCategorie() {
-        return $this->categorie_nom ?? 'Non classé';
+        return $this->categorie_nom ;
+    }
+    public function setCategorie(string $categorie_nom): self
+    {
+        $this->categorie_nom = $categorie_nom;
+
+        return $this;
     }
 
     public function showAllProduits(){
@@ -105,7 +111,9 @@ class Produit {
             'nom' => $this->nom,
             'prix' => $this->prix,
             'stock' => $this->stock,
-            'categorie' =>$this->categorie_nom
+            'categories_id' =>$this->categories_id
         ]);
     }
+
+
 }
