@@ -19,21 +19,17 @@ class AuthController{
             $this->user->setLastname($_POST['Lastname']);
             $this->user->setFirstname($_POST['Firstname']);
             $this->user->setPassword($_POST['password']);
-            if($this->user->save()){
-                header('Location: ../../../View/Login.php');
-                exit();
-            }
-             else{
-            $error = "Erreur lors de l'inscription.";
-        require_once __DIR__ . '/../View/signUp.php'; 
+            $this->user->save();
+                header('Location: /auth/login');
+        }
+           else{ 
+        require_once __DIR__ . '/../View/signUp.php'; }
         }
          
-        }
-        else {
-        require_once __DIR__ . '/../View/signUp.php';   
-        }
+        
 
-        }
+
+        
 
 public function Login() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -43,7 +39,9 @@ public function Login() {
         $user = $this->user->findUserByEmail($email);
 
         if (!$user || !password_verify($password, $user->getPassword())) {
-            echo 'Email ou mot de passe incorrect';
+            $error = 'email ou mot de pass invalide';
+            require_once __DIR__ . '/../View/Login.php';
+            exit();
         } else {
             if (session_status() === PHP_SESSION_NONE) {
         session_start();
@@ -52,11 +50,16 @@ public function Login() {
                 'id' => $user->id,
                 'Firstname' => $user->Firstname,
                 'Lastname' => $user->Lastname,
-                'email' => $user->email
+                'email' => $user->email,
+                'role' => $user->role
             ];
-            
+            if($_SESSION['user']['role'] == 'client'){
             header('Location: /home/Catalogue');
             exit();
+            }
+            else if($_SESSION['user']['role']){
+            header('Location: /admin/dashboard');
+            }
 
         }
     } else {
