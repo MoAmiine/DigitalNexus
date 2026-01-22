@@ -113,4 +113,10 @@ class User {
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_NUM);
     }
+    public function getAllUsers(){
+        $query = 'SELECT * FROM users';
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, self::class);
+    }
 }
