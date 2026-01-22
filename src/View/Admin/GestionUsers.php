@@ -79,10 +79,10 @@
                                             <td class="px-8 py-5">
                                                 <div class="flex items-center space-x-4">
                                                     <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-sm">
-                                                        <?= strtoupper(substr($user->username, 0, 2)) ?>
+                                                        <?= strtoupper(substr($user->Firstname, 0, 2)) ?>
                                                     </div>
                                                     <div>
-                                                        <p class="text-sm font-extrabold text-slate-700"><?= htmlspecialchars($user->username) ?></p>
+                                                        <p class="text-sm font-extrabold text-slate-700"><?=htmlspecialchars($user->Firstname) ?>   <?= htmlspecialchars($user->Lastname)  ?></p>
                                                         <p class="text-xs text-slate-400 font-medium"><?= htmlspecialchars($user->email) ?></p>
                                                     </div>
                                                 </div>
