@@ -36,4 +36,5 @@ INSERT INTO categories (nom) VALUES
 ('Electronique');
 
 ALTER TABLE produits ADD COLUMN categories_id INT;
-ALTER TABLE produits ADD FOREIGN KEY (categories_id) REFERENCES categories(id); 
+ALTER TABLE produits ADD FOREIGN KEY (categories_id) REFERENCES categories(id);
+
