@@ -37,7 +37,7 @@ class AdminController{
 
             header('Location: /admin/Dashboard');
             }
-            require_once __DIR__ . '/../View/AddProduct.php';
+            require_once __DIR__ . '/../View/Admin/AddProduct.php';
     }
 
     public function DeleteProduct(){
@@ -45,5 +45,15 @@ class AdminController{
         $produitModel->DeleteProduit();
 
     require_once __DIR__ . '/../View/Admin/AdminDashbord.php';
+    }
+    public function categories(){
+        $categorieModel = new Categorie();
+        $categories = $categorieModel->findAllCategories();
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $categorie = new Categorie();
+            $categorie->setNomCategorie($_POST['nom_categorie']);
+            $categorie->insertCategorie();
+        }
+        require_once __DIR__ . '/../View/Admin/GestionCategories.php';
     }
 }
