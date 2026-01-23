@@ -21,20 +21,42 @@ use App\Controller\AdminController;
     <div class="min-h-screen flex">
         <aside class="w-72 bg-slate-900 text-white hidden lg:flex flex-col sticky top-0 h-screen">
             <div class="p-8">
-                <a href="/" class="text-2xl font-black tracking-tighter uppercase">
-                    Digital<span class="text-blue-500">Nexus</span>
+                <a href="/" class="text-2xl font-black tracking-tighter">
+                    DIGITAL<span class="text-blue-500">NEXUS</span>
                 </a>
+                <p class="text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em] mt-1">Administration Panel</p>
             </div>
+            
             <nav class="flex-1 px-6 space-y-2">
-                <a href="/admin/dashboard" class="flex items-center space-x-3 text-slate-400 hover:bg-slate-800 p-4 rounded-2xl transition">
-                    <i class="fa-solid fa-chart-pie"></i>
-                    <span>Dashboard</span>
+                <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-4 ml-2">Menu Principal</p>
+                
+                <a href="/admin/dashboard" class="flex items-center space-x-3 text-slate-400 hover:bg-slate-800 hover:text-white p-4 rounded-2xl transition group">
+                    <i class="fa-solid fa-chart-pie text-lg"></i>
+                    <span class="font-bold">Tableau de bord</span>
                 </a>
-                <a href="/admin/produits" class="flex items-center space-x-3 bg-blue-600 text-white p-4 rounded-2xl shadow-lg shadow-blue-900/20 transition">
-                    <i class="fa-solid fa-box"></i>
-                    <span class="font-bold">Gestion Produits</span>
+                
+                <a href="/admin/addProduct" class="flex items-center space-x-3 bg-blue-600 text-white p-4 rounded-2xl transition shadow-lg shadow-blue-900/20">
+                    <i class="fa-solid fa-box text-lg group-hover:text-blue-400"></i>
+                    <span>Gestion Produits</span>
+                </a>
+                
+                <a href="/admin/categories" class="flex items-center space-x-3 text-slate-400 hover:bg-slate-800 hover:text-white p-4 rounded-2xl transition group">
+                    <i class="fa-solid fa-layer-group text-lg group-hover:text-blue-400"></i>
+                    <span>Catégories</span>
+                </a>
+                
+                <a href="/admin/users" class="flex items-center space-x-3 text-slate-400 hover:bg-slate-800 hover:text-white p-4 rounded-2xl transition group">
+                    <i class="fa-solid fa-users-gear text-lg group-hover:text-blue-400"></i>
+                    <span>Utilisateurs</span>
                 </a>
             </nav>
+
+            <div class="p-6 border-t border-slate-800">
+                <a href="/logout" class="flex items-center space-x-3 text-red-400 hover:bg-red-500/10 p-4 rounded-2xl transition font-bold">
+                    <i class="fa-solid fa-power-off"></i>
+                    <span>Déconnexion</span>
+                </a>
+            </div>
         </aside>
 
         <main class="flex-1">
