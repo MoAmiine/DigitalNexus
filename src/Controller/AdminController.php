@@ -33,18 +33,24 @@ class AdminController{
             $produit->setPrix($_POST['prix']);
             $produit->setStock($_POST['quantite']);
             $produit->setCategoriesId($_POST['id']);
+            $products = [];
+            array_push($products, $produit);
             $produit->insertProduit();
-
+            
+            
             header('Location: /admin/Dashboard');
+            var_dump($products);
             }
             require_once __DIR__ . '/../View/Admin/AddProduct.php';
     }
 
     public function DeleteProduct(){
-        $produitModel = new Produit();
-        $produitModel->DeleteProduit();
+        $id = $_GET['id'];
+        $produit = new Produit();
+        $produit->setId($id);
+        $produit->DeleteProduit();   
 
-    require_once __DIR__ . '/../View/Admin/AdminDashbord.php';
+        header('Location: /admin/dashboard');
     }
     public function categories(){
         $categorieModel = new Categorie();
