@@ -186,7 +186,7 @@
                                                 <button title="Modifier" class="w-9 h-9 flex items-center justify-center bg-slate-100 text-slate-600 rounded-xl hover:bg-blue-600 hover:text-white transition">
                                                     <i class="fa-solid fa-pen-to-square text-xs"></i>
                                                 </button>
-                                                <a href="/admin/DeleteProduct"><button value="<? $p->getId() ?>" title="Supprimer" class="w-9 h-9 flex items-center justify-center bg-slate-100 text-red-500 rounded-xl hover:bg-red-500 hover:text-white transition">
+                                                <a href="/admin/DeleteProduct?id=<?= $p->getId()?>"><button title="Supprimer" class="w-9 h-9 flex items-center justify-center bg-slate-100 text-red-500 rounded-xl hover:bg-red-500 hover:text-white transition">
                                                     <i class="fa-solid fa-trash-can text-xs"></i>
                                                 </button></a>
                                             </div>
