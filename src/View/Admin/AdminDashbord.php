@@ -47,7 +47,7 @@
             </nav>
 
             <div class="p-6 border-t border-slate-800">
-                <a href="/logout" class="flex items-center space-x-3 text-red-400 hover:bg-red-500/10 p-4 rounded-2xl transition font-bold">
+                <a href="/auth/Logout" class="flex items-center space-x-3 text-red-400 hover:bg-red-500/10 p-4 rounded-2xl transition font-bold">
                     <i class="fa-solid fa-power-off"></i>
                     <span>Déconnexion</span>
                 </a>
