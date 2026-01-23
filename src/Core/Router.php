@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Core;
+
 use Error;
 
 class Router
@@ -9,18 +10,18 @@ class Router
     public function dispatcher()
     {
         $uri = $_SERVER['REQUEST_URI'];
-        
+
         $response = $this->resolve($uri);
         $this->execute($response);
-        }
+    }
     public function resolve($uri)
     {
         $position = strpos($uri, '?');
-        if ($position == true){
-        $controller = str_split($uri, $position);
-        $uriArray = explode("/", $controller[0]);
-        }else{
-        $uriArray = explode("/", $uri);
+        if ($position == true) {
+            $controller = str_split($uri, $position);
+            $uriArray = explode("/", $controller[0]);
+        } else {
+            $uriArray = explode("/", $uri);
         }
         if (empty($uriArray[1])) {
             return [
@@ -29,31 +30,26 @@ class Router
             ];
         }
         $controller = $uriArray[1];
-        $method = $uriArray[2];
-        // $params = array_slice($uriArray, 2);
+        $method = isset($uriArray[2]) ? $uriArray[2] : 'index';
 
         $controller = ucfirst($controller) . 'Controller';
+
+
         return [
             'controller' => $controller,
             'method' => $method,
-            // 'params' => $params
         ];
-
     }
 
-    public function execute($response){
+    public function execute($response)
+    {
 
         $controller = "\App\Controller\\" . $response['controller'];
         $methodName = $response['method'];
-        $params = isset($response['params']) ? $response['params'] : [];
 
         $instance = new $controller();
 
 
-          return call_user_func(array($instance, $response['method']));
-
-    
+        return call_user_func(array($instance, $response['method']));
     }
-
 }
-
