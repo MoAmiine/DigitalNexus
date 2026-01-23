@@ -44,7 +44,7 @@ session_start();
 
                 <a href="#catalogue" class="hover:text-blue-600 transition">Catalogue</a>
                 <?php if (isset($_SESSION['panier'])):?>
-                <a href="panier/showPanierProduct" class="hover:text-blue-600 transition">Panier</a>
+                <a href="panier/showPanierProduct" class="hover:text-blue-600 transition">Panier (<?= App\Controller\PanierController::getCartCount(); ?>)</a>
                     <?php endif?>
                 <?php if (isset($_SESSION['user'])): ?>
                     <?php
