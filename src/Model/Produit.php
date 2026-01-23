@@ -134,6 +134,6 @@ class Produit
         $query = "SELECT * FROM produits WHERE id IN ($placeholders)";
         $stmt = $this->db->prepare($query);
         $stmt->execute($ids);
-        return $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $stmt->fetchAll(PDO::FETCH_OBJ); 
     }
 }
