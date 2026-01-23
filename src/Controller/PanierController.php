@@ -66,4 +66,12 @@ class PanierController
         
         header('Location: /panier/showPanierProduct');
     }
+public static function getCartCount() {
+        if (session_status() === PHP_SESSION_NONE) session_start();
+        
+        if (isset($_SESSION['panier']) && !empty($_SESSION['panier'])) {
+            return array_sum($_SESSION['panier']);
+        }
+        return 0;
+    }
 }
